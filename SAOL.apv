@@ -168,7 +168,90 @@ WHEN  ('RelationManager:TagFile_') ('')
 WHEN  ('RelationManager:TagSet_') ('')
 WHEN  ('Translator') ('')
 
-%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 0
+%ClassLines DEPEND %ClassItem MULTI DEFAULT TIMES 42
+WHEN  ('FileManager:FTP_ItemxTransferSet') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_RemoteFolder') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_RemoteSite') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_ScheduledTransfer') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'PrimeFields {12}PROCEDURE(),PROC,DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', |
+  'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_Transfer') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_TransferItem') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_TransferLog') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:FTP_TransferSet') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Clientes') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Componentes') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_ComponentesxInstalador') ('Init {19}PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_FTP_Componentes') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_FTP_Release') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Instaladores') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Log') ('BindFields {13}PROCEDURE(),DERIVED', 'Init {19}PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED', 'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Passcode') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED', 'ValidateFieldServer    PROCEDURE(UNSIGNED Id,BYTE HandleErrors),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_Software') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:SAOL_SoftwarexCliente') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:TagFilePos_') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:TagFile_') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('FileManager:TagSet_') ('Init {19}PROCEDURE(),DERIVED', 'Kill {19}PROCEDURE(),DERIVED', |
+  'UseFile {16}PROCEDURE(BYTE UseType = UseType:Uses),BYTE,PROC,DERIVED')
+WHEN  ('RelationManager:FTP_ItemxTransferSet') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_RemoteFolder') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_RemoteSite') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_ScheduledTransfer') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_Transfer') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_TransferItem') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_TransferLog') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:FTP_TransferSet') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Clientes') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Componentes') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_ComponentesxInstalador') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_FTP_Componentes') ('Init {19}PROCEDURE', 'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_FTP_Release') ('Init {19}PROCEDURE', 'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Instaladores') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Log') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Passcode') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_Software') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:SAOL_SoftwarexCliente') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:TagFilePos_') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:TagFile_') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
+WHEN  ('RelationManager:TagSet_') ('Init {19}PROCEDURE', 'DeferedAddRelations    PROCEDURE(),DERIVED', |
+  'Kill {19}PROCEDURE(),DERIVED')
 
 %ProgramAuthor DEFAULT  ('')
 %ProgramIcon DEFAULT  ('saol.ico')
@@ -1378,6 +1461,8 @@ WHEN  ('SAOL021.clw') ('1')
 -- NAMESPACE SAOL
 #system win32 exe
 #model clarion dll
+#pragma define(_ABCDllMode_=>0) -- GENERATED
+#pragma define(_ABCLinkMode_=>1) -- GENERATED
 #compile "SAOL.clw" -- GENERATED
 #compile "SAOL001.clw" -- GENERATED
 #compile "SAOL002.clw" -- GENERATED
@@ -1400,6 +1485,13 @@ WHEN  ('SAOL021.clw') ('1')
 #compile "SAOL019.clw" -- GENERATED
 #compile "SAOL020.clw" -- GENERATED
 #compile "SAOL021.clw" -- GENERATED
+#compile "SAOL$TAG.CLW" -- GENERATED
+#compile "EFOCUS.CLW" -- GENERATED
+#compile "SAOL_BC0.CLW" -- GENERATED
+#compile "SAOL_BC1.CLW" -- GENERATED
+#compile "SAOL_BC.CLW" -- GENERATED
+#pragma link("saol.ico") -- GENERATED
+#pragma link("C%V%tps%X%%L%.lib") -- GENERATED
 #link "SAOL.EXE"
 [PROGRAM]
 [COMMON]
@@ -8289,7 +8381,7 @@ PROTOTYPE '(LONG),BYTE'
 PARAMETERS '(idInstalador)'
 [COMMON]
 FROM ABC Source
-MODIFIED '2018/03/20' '18:25:52'
+MODIFIED '2018/03/21' '11:35:50'
 [FILES]
 [OTHERS]
 SAOL_SoftwarexCliente
@@ -8742,7 +8834,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 
 				QCXI:idInstalador = QINS:idInstalador
 				GET(QComxIns,+QCXI:idInstalador)
-				P# = POINTER(QComxIns)
+				P = POINTER(QComxIns)
 				LOOP
 					IF QCXI:idInstalador <> QINS:idInstalador
 						BREAK
@@ -8778,8 +8870,8 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 						Zip.Kill()
 					END
 					
-					P# += 1
-					GET(QComxIns,P#)
+					P += 1
+					GET(QComxIns,P)
 					IF ERRORCODE()
 						BREAK
 					END
@@ -8829,7 +8921,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				QCXI:idInstalador = QINS:idInstalador
 				CLEAR(QCXI:idComponente)
 				GET(QComxIns,+QCXI:idInstalador)
-				P# = POINTER(QComxIns)
+				P = POINTER(QComxIns)
 				LOOP
 					IF QCXI:idInstalador <> QINS:idInstalador
 						BREAK
@@ -8852,11 +8944,11 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 						CantidadErrores += 1
 					END
 					
-					P# += 1
-					IF P# > RECORDS(QComxIns)
+					P += 1
+					IF P > RECORDS(QComxIns)
 						BREAK
 					END
-					GET(QComxIns,P#)
+					GET(QComxIns,P)
 					IF ERRORCODE()
 						BREAK
 					END
@@ -9000,7 +9092,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 							DISPLAY
 							QCXI:idInstalador = QINS:idInstalador
 							GET(QComxIns,+QCXI:idInstalador)
-							P# = POINTER(QComxIns)
+							P = POINTER(QComxIns)
 							LOOP
 								IF QCXI:idInstalador <> QINS:idInstalador
 									BREAK
@@ -9020,11 +9112,30 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 									
 									QCOM:Estado = 4 ! Subido al FTP
 									PUT(QComponentes)
-									ASSERT(NOT ERRORCODE())
+                           ASSERT(NOT ERRORCODE())
+                           
+                           ! Verificar GITHUB
+                           GH# = INSTRING('RELEASE.DLL',UPPER(QCOM:Path),1,1)
+                           IF GH#
+                              ! Agregar GITHUB.CMD
+                              QGH:Path        = QCOM:Path[1 : GH#-1]
+                              QGH:Comando     = 'GITHUB.CMD'
+                              QGH:Descripcion = QGH:Path & QGH:Comando
+                              GET(QGitHub,+QGH:Descripcion)
+                              IF ERRORCODE()
+                                 QGH:Path        = QCOM:Path[1 : GH#-1]
+                                 QGH:Comando     = 'GITHUB.CMD'
+                                 QGH:Descripcion = QGH:Path & QGH:Comando
+                                 IF EXISTS(QGH:Descripcion)
+                                    ADD(QGitHub,+QGH:Descripcion)
+                                    ASSERT(~ERRORCODE())
+                                 END
+                              END
+                           END
 								END
 								
-								P# += 1
-								GET(QComxIns,P#)
+								P += 1
+								GET(QComxIns,P)
 								IF ERRORCODE()
 									BREAK
 								END
@@ -9065,20 +9176,22 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				! Actualizar GITHUB
 				?String1{PROP:Text} = 'Actualizando versiones publicadas en GITHUB ... Espere por favor ...'
 				?Progreso{PROP:RangeHigh} = RECORDS(QGitHub)
-				Progreso = 0
-				LOOP I# = 1 TO RECORDS(QGitHub)
-					GET(QGitHub,I#)
+            Progreso = 0
+				LOOP Indice = 1 TO RECORDS(QGitHub)
+					GET(QGitHub,Indice)
                ASSERT(~ERRORCODE())
 
                YIELD
 
                SAOL_INS:Descripcion = QGH:Descripcion
                DO MostrarProgreso
-
+               SETPATH(QGH:Path)
                RUN(QGH:Comando,1)
                IF RUNCODE()
-                  GrabarLog(QGH:Descripcion,'Error al ejecutar GITHUB.CMD: ' & RUNCODE(),QGH:Comando)
+                  GrabarLog(QGH:Descripcion,'Error al ejecutar GITHUB.CMD: ' & RUNCODE(),QGH:Descripcion)
+                  MESSAGE('Error al actualizar GITHUB: ' & RUNCODE(),'Atención!',ICON:Exclamation)
                END
+               SETPATH(CurrentPath)
                YIELD
             END
             
@@ -9086,8 +9199,8 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				?String1{PROP:Text} = 'Actualizando versiones publicadas en Base de Datos ... Espere por favor ...'
 				?Progreso{PROP:RangeHigh} = RECORDS(QInstaladores)
 				Progreso = 0
-				LOOP I# = 1 TO RECORDS(QInstaladores)
-					GET(QInstaladores,I#)
+				LOOP Indice = 1 TO RECORDS(QInstaladores)
+					GET(QInstaladores,Indice)
 					ASSERT(~ERRORCODE())
 
 					SAOL_INS:Descripcion = QINS:Descripcion
@@ -9125,7 +9238,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 					QCXI:idInstalador = QINS:idInstalador
 					CLEAR(QCXI:idComponente)
 					GET(QComxIns,+QCXI:idInstalador)
-					P# = POINTER(QComxIns)
+					P = POINTER(QComxIns)
 					LOOP
 						IF QCXI:idInstalador <> QINS:idInstalador
 							BREAK
@@ -9164,11 +9277,11 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 							PUT(SAOL_ComponentesxInstalador)
 						END
 						
-						P# += 1
-						IF P# > RECORDS(QComxIns)
+						P += 1
+						IF P > RECORDS(QComxIns)
 							BREAK
 						END
-						GET(QComxIns,P#)
+						GET(QComxIns,P)
 						IF ERRORCODE()
 							BREAK
 						END
@@ -9211,7 +9324,8 @@ L:Build                 LONG
 L:Fecha                 LONG
 L:Hora                  LONG
 
-Indice               LONG
+Indice                  LONG
+P                       LONG
 
 HayVersion           BYTE
 HayReleaseDll        BYTE
@@ -9282,6 +9396,7 @@ Hora                       LONG
 
 QGitHub                 QUEUE,PRE(QGH)
 Descripcion                CSTRING(FILE:MaxFilePath)
+Path                       CSTRING(FILE:MaxFilePath)
 Comando                    CSTRING(FILE:MaxFilePath)
 								END
 

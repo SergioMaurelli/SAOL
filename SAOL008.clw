@@ -25,7 +25,8 @@ L:Build                 LONG
 L:Fecha                 LONG
 L:Hora                  LONG
 
-Indice               LONG
+Indice                  LONG
+P                       LONG
 
 HayVersion           BYTE
 HayReleaseDll        BYTE
@@ -96,6 +97,7 @@ Hora                       LONG
 
 QGitHub                 QUEUE,PRE(QGH)
 Descripcion                CSTRING(FILE:MaxFilePath)
+Path                       CSTRING(FILE:MaxFilePath)
 Comando                    CSTRING(FILE:MaxFilePath)
 								END
 
@@ -218,6 +220,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 	FREE(QPaths)
 	FREE(QFTPPaths)
 	FREE(QCUIT)
+	FREE(QGitHub)
 
 	! Path para el Log
 	QFTPPAT:Path = '/saol/log/'
@@ -615,7 +618,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 
 				QCXI:idInstalador = QINS:idInstalador
 				GET(QComxIns,+QCXI:idInstalador)
-				P# = POINTER(QComxIns)
+				P = POINTER(QComxIns)
 				LOOP
 					IF QCXI:idInstalador <> QINS:idInstalador
 						BREAK
@@ -651,8 +654,8 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 						Zip.Kill()
 					END
 					
-					P# += 1
-					GET(QComxIns,P#)
+					P += 1
+					GET(QComxIns,P)
 					IF ERRORCODE()
 						BREAK
 					END
@@ -702,7 +705,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				QCXI:idInstalador = QINS:idInstalador
 				CLEAR(QCXI:idComponente)
 				GET(QComxIns,+QCXI:idInstalador)
-				P# = POINTER(QComxIns)
+				P = POINTER(QComxIns)
 				LOOP
 					IF QCXI:idInstalador <> QINS:idInstalador
 						BREAK
@@ -725,11 +728,11 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 						CantidadErrores += 1
 					END
 					
-					P# += 1
-					IF P# > RECORDS(QComxIns)
+					P += 1
+					IF P > RECORDS(QComxIns)
 						BREAK
 					END
-					GET(QComxIns,P#)
+					GET(QComxIns,P)
 					IF ERRORCODE()
 						BREAK
 					END
@@ -873,7 +876,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 							DISPLAY
 							QCXI:idInstalador = QINS:idInstalador
 							GET(QComxIns,+QCXI:idInstalador)
-							P# = POINTER(QComxIns)
+							P = POINTER(QComxIns)
 							LOOP
 								IF QCXI:idInstalador <> QINS:idInstalador
 									BREAK
@@ -893,11 +896,30 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 									
 									QCOM:Estado = 4 ! Subido al FTP
 									PUT(QComponentes)
-									ASSERT(NOT ERRORCODE())
+                           ASSERT(NOT ERRORCODE())
+                           
+                           ! Verificar GITHUB
+                           GH# = INSTRING('RELEASE.DLL',UPPER(QCOM:Path),1,1)
+                           IF GH#
+                              ! Agregar GITHUB.CMD
+                              QGH:Path        = QCOM:Path[1 : GH#-1]
+                              QGH:Comando     = 'GITHUB.CMD'
+                              QGH:Descripcion = QGH:Path & QGH:Comando
+                              GET(QGitHub,+QGH:Descripcion)
+                              IF ERRORCODE()
+                                 QGH:Path        = QCOM:Path[1 : GH#-1]
+                                 QGH:Comando     = 'GITHUB.CMD'
+                                 QGH:Descripcion = QGH:Path & QGH:Comando
+                                 IF EXISTS(QGH:Descripcion)
+                                    ADD(QGitHub,+QGH:Descripcion)
+                                    ASSERT(~ERRORCODE())
+                                 END
+                              END
+                           END
 								END
 								
-								P# += 1
-								GET(QComxIns,P#)
+								P += 1
+								GET(QComxIns,P)
 								IF ERRORCODE()
 									BREAK
 								END
@@ -938,20 +960,22 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				! Actualizar GITHUB
 				?String1{PROP:Text} = 'Actualizando versiones publicadas en GITHUB ... Espere por favor ...'
 				?Progreso{PROP:RangeHigh} = RECORDS(QGitHub)
-				Progreso = 0
-				LOOP I# = 1 TO RECORDS(QGitHub)
-					GET(QGitHub,I#)
+            Progreso = 0
+				LOOP Indice = 1 TO RECORDS(QGitHub)
+					GET(QGitHub,Indice)
                ASSERT(~ERRORCODE())
 
                YIELD
 
                SAOL_INS:Descripcion = QGH:Descripcion
                DO MostrarProgreso
-
+               SETPATH(QGH:Path)
                RUN(QGH:Comando,1)
                IF RUNCODE()
-                  GrabarLog(QGH:Descripcion,'Error al ejecutar GITHUB.CMD: ' & RUNCODE(),QGH:Comando)
+                  GrabarLog(QGH:Descripcion,'Error al ejecutar GITHUB.CMD: ' & RUNCODE(),QGH:Descripcion)
+                  MESSAGE('Error al actualizar GITHUB: ' & RUNCODE(),'Atención!',ICON:Exclamation)
                END
+               SETPATH(CurrentPath)
                YIELD
             END
             
@@ -959,8 +983,8 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 				?String1{PROP:Text} = 'Actualizando versiones publicadas en Base de Datos ... Espere por favor ...'
 				?Progreso{PROP:RangeHigh} = RECORDS(QInstaladores)
 				Progreso = 0
-				LOOP I# = 1 TO RECORDS(QInstaladores)
-					GET(QInstaladores,I#)
+				LOOP Indice = 1 TO RECORDS(QInstaladores)
+					GET(QInstaladores,Indice)
 					ASSERT(~ERRORCODE())
 
 					SAOL_INS:Descripcion = QINS:Descripcion
@@ -998,7 +1022,7 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 					QCXI:idInstalador = QINS:idInstalador
 					CLEAR(QCXI:idComponente)
 					GET(QComxIns,+QCXI:idInstalador)
-					P# = POINTER(QComxIns)
+					P = POINTER(QComxIns)
 					LOOP
 						IF QCXI:idInstalador <> QINS:idInstalador
 							BREAK
@@ -1037,11 +1061,11 @@ IF NOT OpcionesGeneracion(Compilar,Comprimir,CrearTPS,SubirFTP,SubirCompulsivame
 							PUT(SAOL_ComponentesxInstalador)
 						END
 						
-						P# += 1
-						IF P# > RECORDS(QComxIns)
+						P += 1
+						IF P > RECORDS(QComxIns)
 							BREAK
 						END
-						GET(QComxIns,P#)
+						GET(QComxIns,P)
 						IF ERRORCODE()
 							BREAK
 						END
