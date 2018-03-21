@@ -1,0 +1,32 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
+# Clarion 2.1.0.2447
+Project("{12B76EC0-1D7B-4FA7-A7D0-C524288B48A1}") = "SAOL", "SAOL.cwproj", "{55161049-6B22-4831-BD0A-E983205CA331}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{{2150E333-8FDC-42A3-9474-1A3956D46DE8}}"
+	ProjectSection(SolutionItems) = postProject
+		SAOL.app = SAOL.app
+		SAOL.dct = SAOL.dct
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Win32 = Debug|Win32
+		Release|Win32 = Release|Win32
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{55161049-6B22-4831-BD0A-E983205CA331}.Debug|Win32.Build.0 = Debug|Win32
+		{55161049-6B22-4831-BD0A-E983205CA331}.Debug|Win32.ActiveCfg = Debug|Win32
+		{55161049-6B22-4831-BD0A-E983205CA331}.Release|Win32.Build.0 = Release|Win32
+		{55161049-6B22-4831-BD0A-E983205CA331}.Release|Win32.ActiveCfg = Release|Win32
+		{1F7B336D-101B-4618-AEF7-6C1EACB16401}.Debug|Win32.Build.0 = Debug|Win32
+		{1F7B336D-101B-4618-AEF7-6C1EACB16401}.Debug|Win32.ActiveCfg = Debug|Win32
+		{1F7B336D-101B-4618-AEF7-6C1EACB16401}.Release|Win32.Build.0 = Release|Win32
+		{1F7B336D-101B-4618-AEF7-6C1EACB16401}.Release|Win32.ActiveCfg = Release|Win32
+		{FF901DB4-77A8-4635-A39B-25C498198266}.Debug|Win32.Build.0 = Debug|Win32
+		{FF901DB4-77A8-4635-A39B-25C498198266}.Debug|Win32.ActiveCfg = Debug|Win32
+		{FF901DB4-77A8-4635-A39B-25C498198266}.Release|Win32.Build.0 = Release|Win32
+		{FF901DB4-77A8-4635-A39B-25C498198266}.Release|Win32.ActiveCfg = Release|Win32
+	EndGlobalSection
+EndGlobal

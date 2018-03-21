@@ -1,0 +1,131 @@
+﻿<Project DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <ProjectGuid>{89169516-FC02-46E3-BC33-54157E2B1301}</ProjectGuid>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">Win32</Platform>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>SAOL</RootNamespace>
+    <AssemblyName>SAOL</AssemblyName>
+    <OutputName>SAOL</OutputName>
+    <CWOutputType>Exe</CWOutputType>
+    <DefineConstants>_ABCDllMode_=&gt;0%3b_ABCLinkMode_=&gt;1%3b</DefineConstants>
+    <Model>Dll</Model>
+    <ApplicationIcon>saol.ico</ApplicationIcon>
+    <stack_size>16384</stack_size>
+    <CopyCore>False</CopyCore>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+    <DebugSymbols>True</DebugSymbols>
+    <DebugType>Full</DebugType>
+    <vid>full</vid>
+    <check_stack>True</check_stack>
+    <check_index>True</check_index>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+    <DebugSymbols>False</DebugSymbols>
+    <DebugType>None</DebugType>
+    <vid>off</vid>
+    <check_stack>False</check_stack>
+    <check_index>False</check_index>
+    <warnings>on</warnings>
+    <GenerateMap>True</GenerateMap>
+    <line_numbers>False</line_numbers>
+  </PropertyGroup>
+  <ItemGroup>
+    <FileDriver Include="TOPSPEED" />
+    <Compile Include="EFOCUS.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL%24TAG.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL001.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL002.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL003.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL004.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL005.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL006.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL007.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL008.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL009.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL010.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL011.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL012.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL013.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL014.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL015.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL016.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL017.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL018.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL019.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL020.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL021.clw">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL_BC.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL_BC0.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Compile Include="SAOL_BC1.CLW">
+      <Generated>true</Generated>
+    </Compile>
+    <Library Include="BOXBBOX.ICO" />
+    <Library Include="BOXEMPTY.ICO" />
+    <Library Include="LSPUZIPX.LIB" />
+    <Library Include="LSPZIPX.LIB" />
+    <Library Include="nok.ico" />
+    <Library Include="nopuede.ico" />
+    <Library Include="nosepuede.ico" />
+    <Library Include="SAOL.EXE.manifest" />
+    <Library Include="SAOL.ICO" />
+    <Library Include="todobien.ico" />
+    <Library Include="VERSION.LIB" />
+    <Library Include="wininet.lib" />
+  </ItemGroup>
+  <Import Project="$(ClarionBinPath)\SoftVelocity.Build.Clarion.targets" />
+</Project>

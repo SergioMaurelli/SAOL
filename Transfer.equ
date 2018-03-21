@@ -1,0 +1,33 @@
+! Direcciones de Transferencia
+FTP_UPLOAD               EQUATE(1)
+FTP_DOWNLOAD             EQUATE(2)
+FTP_ESPECIAL             EQUATE(3)
+
+! Estado de ScheduledTransfer
+FTPST:Estado:EnEspera    EQUATE(1)
+FTPST:Estado:EnProceso   EQUATE(2)
+FTPST:Estado:Completa    EQUATE(3)
+FTPST:Estado:Suspendida  EQUATE(4)
+FTPST:Estado:EnError     EQUATE(5)
+
+! Estado de Transfer
+FTPT:Estado:EnEspera     EQUATE(1)
+FTPT:Estado:EnProceso    EQUATE(2)
+FTPT:Estado:Completa     EQUATE(3)
+FTPT:Estado:Suspendida   EQUATE(4)
+FTPT:Estado:EnError      EQUATE(5)
+
+! Tipo de Log
+
+LOG_INFO         EQUATE(1)
+LOG_ESPECIAL     EQUATE(2)
+LOG_ERROR        EQUATE(3)
+
+! Tipo de Acciones Especiales
+FTP_ESPECIAL_CREAR_CARPETA           EQUATE(1)
+FTP_ESPECIAL_BORRAR_CARPETA          EQUATE(2)
+FTP_ESPECIAL_BORRAR_ARCHIVO          EQUATE(3)
+FTP_ESPECIAL_EJECUTAR_APLICACION     EQUATE(4)
+FTP_ESPECIAL_BORRAR_ARCHIVOS_LOCALES EQUATE(5)
+FTP_ESPECIAL_BORRAR_ARCHIVOS_REMOTOS EQUATE(6)
+
